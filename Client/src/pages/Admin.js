@@ -6,7 +6,7 @@ const Admin = () => {
          <img src="logo/logoimg.png" alt="logo" Width="200" Height="200"  className="logo"/>
          <h1> Page Admin </h1>
 
-         <AddProduct/>
+    
         </div>
     )
 }

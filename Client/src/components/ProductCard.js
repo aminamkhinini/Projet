@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,Link} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -13,6 +13,13 @@ const useStyles = makeStyles({
     maxWidth: 345,
   },
 });
+
+
+
+
+
+  
+
 
 export default function ProductCard({product}) {
   const classes = useStyles();
@@ -35,21 +42,17 @@ export default function ProductCard({product}) {
            {product.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-           {product.description}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
            {product.price}TND
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-           {product.category}
-          </Typography>
-
+          <Button variant="outline-info">
+             <Link to={`/ProductDetails/${product.id}`}>ProductDetails</Link>  
+             </Button>
         </CardContent>
       
         <Button variant="contained" color="secondary">
  Buy
 </Button>
-<Button variant="contained">View</Button>
+
     </Card>
   );
 

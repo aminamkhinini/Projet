@@ -12,9 +12,9 @@ switch (type) {
     case LOGIN_USER:
         localStorage.setItem('auth-token', payload.token);
         localStorage.setItem('isAuth', true);
-        localStorage.setItem('user', JSON.stringify(payload.user));
+        localStorage.setItem('user', JSON.stringify(payload.User));
         return{...state,
-            user: payload.user,
+            user: payload.User,
             token: payload.token,
             isAuth: true,
             errors: null,};

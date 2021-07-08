@@ -8,7 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
-import Select from '@material-ui/core/Select' 
+
+
+
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 //redux
@@ -67,37 +69,30 @@ const useStyles = makeStyles((theme) => ({
  
 }));
 
-export default function PrimarySearchAppBar() {
+export default function NavBar() {
     const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  
+
   const dispatch = useDispatch();
   const history = useHistory();
-  const isAuth = useSelector((state) => state.authReducer.isAuth);
-  const user = useSelector((state) => state.authReducer.user);
+  const isAuth = useSelector(state=> state.authReducer);
+
+  const user = useSelector(state => state.authReducer);
 
  
 
-  
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
- 
-  
-
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-
-
-
- 
+  
   return (
     <div className={classes.grow}>
       <AppBar position="sticky" style={{backgroundColor:"pink",color:"black", height:60 }}>
@@ -106,16 +101,24 @@ export default function PrimarySearchAppBar() {
         <Button color='inherit' >
               <Link to='/' >home</Link>
          </Button>
-         <Button color='inherit' >
-            <Link to='/Products'>Products</Link>
-         </Button>
-            
+        
+    
           <Button color='inherit'>
-              <Link to='/Conseils'>Nos Conseils</Link>
+              <Link to='/Conseils'>Our Conseil </Link>
           </Button>
          <Button color='inherit'>
-              <Link to='/Contact'>Contact</Link>
+              <Link to='/Contact'> Contact</Link>
             </Button>
+
+            
+         <Button
+         color='inherit'
+        >
+          <Link to='/Products' >Products</Link>
+        </Button>
+       
+      
+
           </Typography>
           
           <div className={classes.search}>
@@ -142,8 +145,8 @@ export default function PrimarySearchAppBar() {
                 color="inherit"
               >
                 <AccountCircle />
-              </IconButton>
-              <Menu
+           
+                <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
@@ -163,19 +166,19 @@ export default function PrimarySearchAppBar() {
                 <Link to='/Register'>LOGOUT</Link>
               </Button>
             ) : (
-              <Select>
+              <>
                 <Button color='inherit'>
                   <Link to='/Register'>Register</Link>
-                </Button>
-               
+                </Button> 
                 <Button color='inherit'>
                   <Link to='/Login'>LOGIN</Link>
                 </Button>
-              </Select>
+              </>
             )}
             {user ? <span className="name"> {user.firstname} {user.lastname}  </span> : <> </>}
-      
-              </Menu>
+            </Menu>
+            </IconButton>
+          
               <img src="icons/shoppingbasket.png" alt="basket"  className="basket"/>
            
             </div>

@@ -60,7 +60,7 @@ const [input, setInput] = useState({
   email:'',
   password:''
 })
-const errors = useSelector((state) => state.authReducer.errors);
+const errors = useSelector((state) => state.authReducer?.errors);
   const dispatch = useDispatch();
   const history = useHistory();
 const handelChange = (e) => {
@@ -110,7 +110,7 @@ const handelSubmit = (e) => {
             label="Remember me"
           />
           
-          
+          <p> {errors ? errors : ''} </p>
           <Button
             type="submit"
             fullWidth

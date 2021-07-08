@@ -18,7 +18,7 @@ export const loginUser = (data, history) => async (dispatch) => {
   try {
     const res = await axios.post('/user/login',data);
     dispatch({ type: LOGIN_USER, payload: res.data });
-    if((res.data.user.role)==='admin')
+    if((res.data.User.role)==='admin')
     history.push('/Admin');
     else history.push('/Profile');
   } catch (error) {
@@ -29,7 +29,7 @@ export const loginUser = (data, history) => async (dispatch) => {
 export const logout = (history) => async (dispatch) => {
   try {
     dispatch({ type: LOGOUT });
-    history.push('login');
+    history.push('/login');
   } catch (error) {
     console.log(error);
   }

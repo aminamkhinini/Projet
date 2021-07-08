@@ -38,6 +38,7 @@ export default function AddProductMOdal() {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [auth, setAuth] = React.useState(true);
+  
   const handleOpen = () => {
     setOpen(true);
   };
@@ -50,7 +51,15 @@ export default function AddProductMOdal() {
 
   const dispatch=useDispatch();
   const[input, setInput] = useState();
-  const[file,setFile]=useState();
+
+
+ 
+ 
+ 
+      
+  const handleChange = (e) => {
+    setInput({...input,[e.target.name]:e.target.value})
+  };
 
   const [newProduct , setNewProduct ] = useState(
 
@@ -63,28 +72,13 @@ export default function AddProductMOdal() {
         countInStock:''
     } 
   )
- 
- 
- 
-      
-  const handleChange = (e) => {
-    setInput({...input,[e.target.name]:e.target.value})
-  };
-const  SelectImageToUpload =(e) =>{
-    setFile(e.target.files[0]);
-    let formData= new FormData()
-    formData.append("baby",file)
-    axios.post("/img",formData)
-    .then (res=>console.log(res.data))
-}
-
   const handleSubmit  =(e) => {
     e.preventDefault();
- dispatch(addProduct (newProduct,file)) 
-    alert('Product added successfully');
-   };
-  
 
+ dispatch(addProduct(newProduct));
+
+alert('Product added successfully');
+}
   return (
     <div>
       <Button type="button" onClick={handleOpen} variant="contained" color="secondary" >
@@ -104,7 +98,7 @@ const  SelectImageToUpload =(e) =>{
 
       <input type="file"
        id="baby" name="baby"
-       accept="image/png, image/jpeg" onChange={SelectImageToUpload}/>
+       accept="image/png, image/jpeg" onChange={handleChange}/>
  
     </form>
     <label className="input">Title:     </label>

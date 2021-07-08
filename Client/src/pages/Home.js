@@ -1,20 +1,28 @@
 
 import { Carousel } from 'react-bootstrap'
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import {useSelector}  from 'react-redux'
-import ProductCard from '../components/ProductCard';
 
-//state/redux
-import {useDispatch} from 'react-redux'
-import {getProducts} from '../actions/ProductAction';
+
+
 const Home = () => {
   
-  const dispatch=useDispatch();
-  useEffect(() => {
-     dispatch(getProducts())
-  }, [])
-  const products= useSelector((state) =>state.ProductReducer.products)
-  console.log(products)
+  
+
+  //const [newProduct , setNewProduct ] = useState(
+
+   // {product_id:'',
+       // title:'',
+        //price:'',
+       // description:'',
+        //images:'',
+        //category:'',
+        //countInStock:''
+    //} 
+  //)
+  //const handleSubmit  =(newProduct) => {
+   // setNewProduct([...products,newProduct])
+   //};
     return (
         <div>
           
@@ -51,12 +59,7 @@ const Home = () => {
   </Carousel.Item>
 </Carousel>
 
-        <h1> List Products </h1>
-        <div style={{display:'flex', justifyContent:'space-around'}}> 
-            {products && products.map((product)=> {
-            return <ProductCard key={product._id} product={product}/>})}
-           
-        </div>
+     
 <h1> Nos Conseils</h1>
 <h1> Babylando</h1>
         </div>

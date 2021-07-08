@@ -10,8 +10,6 @@ import {
   DELETE_PRODUCT_FAIL ,  
 } from "./types";
 import axios from "axios";
-import { tokenSet } from "../helpers/tokenSet";
-var FormData = require("form-data");
 
 export const getProducts = () => async (dispatch) => {
   try {
@@ -26,22 +24,20 @@ export const getProducts = () => async (dispatch) => {
 
 
 
-export const addProduct = (data, file) => async (dispatch) => {
-  tokenSet();
-  let formData = new FormData();
-  formData.append("baby", file);
-  formData.append("data", JSON.stringify(data));
+export const addProduct = (product )=> async (dispatch) => {
+ 
 
   try {
-    const res = await axios.post("/product/newProduct", formData, {
+    const res = await axios.post("/product/newProduct", product, {
       headers: { "auth-token": localStorage.getItem("auth-token") },
     });
-    dispatch({ type: ADD_PRODUCT_SUCCESS, payload: res.data });
-    console.log(res.data);
+  ( dispatch(getProducts()));
+  
   } catch (error) {
     dispatch({ type:  ADD_PRODUCT_FAIL, payload: error?.response?.data?.message });
   }
 };
+
 
 export const deleteProduct = (id) => (dispatch) => {
   try {
