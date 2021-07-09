@@ -11,6 +11,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -27,7 +29,8 @@ const ProductDetails = ({ products, match, history }) => {
     <div className="description">
       <h1> Product Details </h1>
      
-
+   
+    
       <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -35,26 +38,26 @@ const ProductDetails = ({ products, match, history }) => {
           alt="image"
           height="300"
           width="300"
-          image={products.find((products) => products._id === match.params.id).images}
+          image={products.find((product) => product._id === match.params.id).images}
           title="image product"
         />
         </CardActionArea>
         <CardContent>
        
           <Typography gutterBottom variant="h5" component="h2">
-      {products.find((products) => products._id === match.params.id).title}
+      {products.find((product) => product._id === match.params.id).title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-           {products.find((products) => products._id === match.params.id).price}TND
+           {products.find((product) => product._id === match.params.id).price}TND
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          {products.find((products) => products._id === match.params.id).description}
+          {products.find((product) => product._id === match.params.id).description}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-         {products.find((products) => products._id === match.params.id).category}
+         {products.find((product) => product._id === match.params.id).category}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-        {products.find((products) => products._id === match.params.id).countInStock}
+        {products.find((product) => product._id === match.params.id).countInStock}
           </Typography>
         </CardContent>
         </Card>
