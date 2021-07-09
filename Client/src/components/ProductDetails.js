@@ -18,17 +18,15 @@ const useStyles = makeStyles({
 });
 
 
-const ProductDetails = ({ product, match, history }) => {
+const ProductDetails = ({ products, match, history }) => {
     const classes = useStyles();
-    const products= useSelector((state) =>state.ProductReducer?.products)
+   console.log(products)
 
   return (
       
     <div className="description">
-      <h1> Description Product </h1>
-      <p>
-        {products.find((products) => products._id === match.params.id).description}
-      </p>
+      <h1> Product Details </h1>
+     
 
       <Card className={classes.root}>
       <CardActionArea>
@@ -37,26 +35,26 @@ const ProductDetails = ({ product, match, history }) => {
           alt="image"
           height="300"
           width="300"
-          image={product.images}
+          image={products.find((products) => products._id === match.params.id).images}
           title="image product"
         />
         </CardActionArea>
         <CardContent>
        
           <Typography gutterBottom variant="h5" component="h2">
-           {product.title}
+      {products.find((products) => products._id === match.params.id).title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-           {product.price}TND
+           {products.find((products) => products._id === match.params.id).price}TND
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-           {product.description}
+          {products.find((products) => products._id === match.params.id).description}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-           {product.category}
+         {products.find((products) => products._id === match.params.id).category}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-           {product.countInStock}
+        {products.find((products) => products._id === match.params.id).countInStock}
           </Typography>
         </CardContent>
         </Card>

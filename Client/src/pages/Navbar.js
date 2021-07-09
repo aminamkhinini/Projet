@@ -77,9 +77,9 @@ export default function NavBar() {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const isAuth = useSelector(state=> state.authReducer);
+  const isAuth = useSelector(state=> state.auth.isAuth);
 
-  const user = useSelector(state => state.authReducer);
+  const user = useSelector(state => state.auth.user);
 
  
 

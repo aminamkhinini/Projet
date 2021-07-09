@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const isAuth = useSelector((state) => state.authReducer.isAuth);
-  const role = useSelector((state) => state.authReducer.user.role);
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  const role = useSelector((state) => state.auth.user.role);
 
   return (
     <Route

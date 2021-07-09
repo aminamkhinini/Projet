@@ -2,10 +2,11 @@
 import React,{useEffect,useState} from 'react'
 import {useSelector}  from 'react-redux'
 import ProductCard from '../components/ProductCard';
+import AddProduct from '../components/AddProduct'
 import { CardDeck } from 'react-bootstrap';
 //state/redux
 import {useDispatch} from 'react-redux'
-import {getProducts} from '../actions/ProductAction';
+import { getProducts} from '../actions/ProductAction';
 
 const Products = () => {
 
@@ -25,7 +26,7 @@ const Products = () => {
         <CardDeck className="List Products" >  
             {products && products.map((product)=> {
             return <ProductCard key={product._id} product={product}/>})}
-           
+          
          </CardDeck>
       
         </div>

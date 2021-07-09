@@ -24,19 +24,21 @@ export const getProducts = () => async (dispatch) => {
 
 
 
-export const addProduct = (product )=> async (dispatch) => {
+export const addProduct = (newProducts )=> async (dispatch) => {
  
 
   try {
-    const res = await axios.post("/product/newProduct", product, {
+    const res = await axios.post("/product/newProduct", newProducts, {
       headers: { "auth-token": localStorage.getItem("auth-token") },
     });
-  ( dispatch(getProducts()));
+   dispatch({type:ADD_PRODUCT_SUCCESS, payload:res.data});
   
   } catch (error) {
     dispatch({ type:  ADD_PRODUCT_FAIL, payload: error?.response?.data?.message });
   }
 };
+
+
 
 
 export const deleteProduct = (id) => (dispatch) => {

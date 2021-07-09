@@ -5,7 +5,7 @@ import {Modal,Button} from '@material-ui/core';
 import { addProduct } from '../actions/ProductAction'
 // redux
 import {useDispatch, useSelector} from 'react-redux';
-import axios from 'axios';
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -32,12 +32,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddProductMOdal() {
+export default function AddProductMOdal({handleAddNewProduct}) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [auth, setAuth] = React.useState(true);
+  
   
   const handleOpen = () => {
     setOpen(true);
@@ -61,24 +62,25 @@ export default function AddProductMOdal() {
     setInput({...input,[e.target.name]:e.target.value})
   };
 
-  const [newProduct , setNewProduct ] = useState(
+ const [newProducts , setNewProducts ] = useState(
 
-    {product_id:'',
-        title:'',
-        price:'',
-        description:'',
-        images:'',
-        category:'',
-        countInStock:''
-    } 
+   {product_id:'',
+       title:'',
+       price:'',
+       description:'',
+       images:'',
+       category:'',
+       countInStock:''
+   } 
   )
-  const handleSubmit  =(e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
 
- dispatch(addProduct(newProduct));
+ dispatch (addProduct(newProducts));
 
 alert('Product added successfully');
 }
+console.log(newProducts)
   return (
     <div>
       <Button type="button" onClick={handleOpen} variant="contained" color="secondary" >
@@ -124,7 +126,10 @@ alert('Product added successfully');
 
       
 
-      <Button type='submit'onClick={handleSubmit} variant="contained" color="secondary">Add New Product </Button>
+      <Button type='submit'onClick={ handleSubmit} variant="contained" color="secondary">Add New Product </Button>
+  
+      <Button variant="contained" color="secondary" onClick={handleClose}> Close </Button>
+          
     </div>
    
     </Modal>

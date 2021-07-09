@@ -15,16 +15,20 @@ const initState = {
 };
 
 const ProductReducer = (state = initState, action) => {
+
   switch (action.type) {
     case GET_PRODUCTS_SUCCESS:
     
       return { ...state, products: action.payload, errors: null };
+   
       case ADD_PRODUCT_SUCCESS:
-    
-            return{
-                ...state,
-               products: [action.payload, ...state.products]
-            }
+
+              
+        return{
+          ...state,
+          products: [action.payload, ...state.products]
+      }  
+                       
         
     case UPDATE_PRODUCT_SUCCESS:
     
