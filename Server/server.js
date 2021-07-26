@@ -6,6 +6,7 @@ const app = express()
 
 
 
+
 //Middlewares
 app.use(express.json())
 app.use(cors())
@@ -14,14 +15,15 @@ app.use("/uploads",express.static(__dirname + "/uploads"))
 
 const mongoose=require('mongoose');
 require('dotenv').config({path:'./.env'});
+
 //routes
 
 app.use('/user',require('./routes/user'));
 app.use('/category',require('./routes/category'));
 app.use('/img',require('./routes/upload'));
-app.use('/product',require('./routes/product'));
+app.use('/item',require('./routes/item'));
 app.use('/order',require('./routes/order'));
-
+app.use('/cart',require('./routes/cart'));
 
 
 // mongoose connect

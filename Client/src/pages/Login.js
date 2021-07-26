@@ -12,24 +12,26 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Card} from 'react-bootstrap'
+
 // react-router-dom
 import { useHistory } from 'react-router-dom';
 // redux
 import { loginUser } from '../actions/authAction';
 import { useDispatch, useSelector } from 'react-redux';
-
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+       babylando
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -71,13 +73,14 @@ const handelSubmit = (e) => {
   dispatch(loginUser(input, history));
 };
   return (
+    <div> 
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h2" variant="h5"style={{fontFamily:"Roboto, sans-serif"}}>
       Login
         </Typography>
         <form className={classes.form} noValidate>
@@ -135,9 +138,38 @@ const handelSubmit = (e) => {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
+     
+    </Container>
+    <footer> 
+      <Card style={{ backgroundColor: "pink" }}>
+        <Card.Body>
+          <Card.Title className="card-title">Conseils</Card.Title>
+          <Card.Text>
+          <Link to={`/Conseils`} className="link"> <h5>Bébé a mal aux dents : que penser du collier d’ambre ? </h5> </Link> 
+          <Link to={`/Conseils`} className="link"> <h5> La Fièvre</h5> </Link> 
+          <Link to={`/Conseils`} className="link"> <h5>Comment bien dormir pendant la grossesse </h5> </Link> 
+          </Card.Text>
+
+          <Card.Title>Assistance</Card.Title>
+          <Card.Text>
+            <p>
+              {" "}
+              Vous avez besoin d'aide ? Appelez-nous au (+216) 93 507 078 | Toute
+              la semaine de 9h à 20h. babylando@gmail.com
+            </p>
+          </Card.Text>
+          <Button variant="primary">Allez vers le haut</Button>
+        </Card.Body>
+        <Box mt={8}>
         <Copyright />
       </Box>
-    </Container>
+      </Card>
+      </footer>
+
+
+
+
+</div>
   );
 }
+

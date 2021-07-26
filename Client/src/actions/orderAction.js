@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {  GET_ORDERS_SUCCESS, GET_ORDERS_FAIL, CHECKOUT_SUCCESS,CHECKOUT_FAIL} from './types';
 
-export const getOrders = (id) => (dispatch) => {
+export const getOrders = (id) => async (dispatch) => {
   
 try {
   const res = await axios.get(`/order/${id}`);
@@ -11,7 +11,7 @@ try {
 }
 }
 
-export const checkout = (id, source) => dispatch => {
+export const checkout = (id, source) =>async (dispatch) => {
   try {
     const res = axios.post(`/order/${id}`, {source});
     dispatch({ type: CHECKOUT_SUCCESS, payload: res.data });

@@ -8,9 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
-
-
-
+import {Nav} from 'react-bootstrap';
+import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 //redux
@@ -81,7 +80,7 @@ export default function NavBar() {
 
   const user = useSelector(state => state.auth.user);
 
- 
+
 
 
   const handleClose = () => {
@@ -92,32 +91,31 @@ export default function NavBar() {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  
+  const [searchTerm, setSearchTerm] = React.useState("");
+
+  const handleChange = event => {
+    setSearchTerm(event.target.value);
+  };
   return (
     <div className={classes.grow}>
-      <AppBar position="sticky" style={{backgroundColor:"pink",color:"black", height:60 }}>
+      <AppBar position="sticky" style={{backgroundColor:"pink",color:"black", height:60}}>
         <Toolbar>
+        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
         <Typography variant="h6" className={classes.title}>
-        <Button color='inherit' >
-              <Link to='/' >home</Link>
-         </Button>
-        
-    
-          <Button color='inherit'>
-              <Link to='/Conseils'>Our Conseil </Link>
-          </Button>
-         <Button color='inherit'>
-              <Link to='/Contact'> Contact</Link>
-            </Button>
-
-            
-         <Button
-         color='inherit'
-        >
-          <Link to='/Products' >Products</Link>
-        </Button>
+        <Nav
+      className="mr-auto my-2 my-lg-0"
+      style={{ maxHeight: '100px' }}
+      navbarScroll
+    >
+      <Nav.Link href="/" className="nav">Acceuil</Nav.Link>
+      <Nav.Link href="/Conseils"className="nav">Nos Conseils</Nav.Link>
+      <Nav.Link href="/Items"className="nav">Articles</Nav.Link>
+      <Nav.Link href="/contact"className="nav">Contact</Nav.Link>
+    </Nav>
        
-      
+         
 
           </Typography>
           
@@ -132,6 +130,8 @@ export default function NavBar() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              value={searchTerm}
+              onChange={handleChange}
             />
           </div>
           
@@ -145,7 +145,7 @@ export default function NavBar() {
                 color="inherit"
               >
                 <AccountCircle />
-           
+                </IconButton>
                 <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -162,24 +162,24 @@ export default function NavBar() {
                 onClose={handleClose}
               >
                  {isAuth ? (
-              <Button color='inherit' onClick={() => dispatch(logout(history))}>
+              <Button color='inherit' onClick={handleClose} onClick={() => dispatch(logout(history))}>
                 <Link to='/Register'>LOGOUT</Link>
               </Button>
             ) : (
               <>
-                <Button color='inherit'>
+                <Button color='inherit'onClick={handleClose}>
                   <Link to='/Register'>Register</Link>
                 </Button> 
-                <Button color='inherit'>
+                <Button color='inherit' onClick={handleClose} >
                   <Link to='/Login'>LOGIN</Link>
                 </Button>
               </>
             )}
             {user ? <span className="name"> {user.firstname} {user.lastname}  </span> : <> </>}
             </Menu>
-            </IconButton>
           
-              <img src="icons/shoppingbasket.png" alt="basket"  className="basket"/>
+          
+            
            
             </div>
             

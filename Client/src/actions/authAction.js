@@ -20,7 +20,7 @@ export const loginUser = (data, history) => async (dispatch) => {
     dispatch({ type: LOGIN_USER, payload: res.data });
     if((res.data.User.role)==='admin')
     history.push('/Admin');
-    else history.push('/Profile');
+    else history.push('/Items');
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error?.response?.data?.message });
   }

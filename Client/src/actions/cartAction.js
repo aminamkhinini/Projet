@@ -7,10 +7,12 @@ import {
   ADD_TO_CART_FAIL,
   DELETE_FROM_CART_SUCCESS,
   DELETE_FROM_CART_FAIL,
+
 } from "./types";
 
 export const getCart = (id) => async (dispatch) => {
   try {
+   
     const res = await axios.get(`/cart/${id}`);
     dispatch({ type: GET_CART_SUCCESS, payload: res.data });
   } catch (error) {
@@ -18,7 +20,7 @@ export const getCart = (id) => async (dispatch) => {
   }
 };
 
-export const addToCart = (id, productId, quantity) => (dispatch) => {
+export const addToCart = (id, productId, quantity) => async(dispatch) => {
   try {
     const res = await axios.post(`/cart/${id}`, { productId, quantity });
     dispatch({ type: ADD_TO_CART_SUCCESS, payload: res.data });
@@ -30,7 +32,7 @@ export const addToCart = (id, productId, quantity) => (dispatch) => {
   }
 };
 
-export const deleteFromCart = (userId, productId) => (dispatch) => {
+export const deleteFromCart = (userId, productId) => async(dispatch) => {
   try {
     const res = await axios.delete(`/cart/${userId}/${productId}`);
     dispatch({ type: DELETE_FROM_CART_SUCCESS, payload: res.data });
@@ -41,3 +43,4 @@ export const deleteFromCart = (userId, productId) => (dispatch) => {
     });
   }
 };
+

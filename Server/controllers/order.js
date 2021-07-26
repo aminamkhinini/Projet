@@ -1,81 +1,49 @@
-const catchAsync= require('express-async-handler');
+const Order = require('../models/Orderschema');
+const Cart = require('../models/Cartschema');
+const User = require('../models/Userschema');
 
-const Order= require ('../models/orderschema')
+require('dotenv').config({path:'./.env'});
 
-exports. addOrderItems = async (req, res) => {
-    try {
-        const {
-            orderItems,
-            shippingAddress,
-            shippingPrice,
-            paymentMethod,
-            taxPrice,
-            itemsPrice,
-            totalPrice,
-          } = req.body
-       
-          if (orderItems && orderItems.length === 0) return res.status(400).json({msg:"No Order Items"})
-            
-           else {
-            const order = await Order.create({
-              orderItems,
-              shippingAddress,
-              shippingPrice,
-              paymentMethod,
-              taxPrice,
-              itemsPrice,
-              totalPrice,
-              user: req.userId,
+
+const stripe = process.env.StripeAPIKey;
+
+module.exports.get_orders = async (req,res) => {
+    
+    const orders = await Cart.find({ user: req.userId });
+    res.send(orders);
+}
+
+module.exports.checkout = async (req,res) => {
+    try{
+        const userId = req.params.id;
+        const {source} = req.body;
+        let cart = await Cart.findOne({userId});
+        let user = await User.findOne({_id: userId});
+        const email = user.email;
+        if(cart){
+            const charge = await stripe.charges.create({
+                amount: cart.bill,
+                currency: 'inr',
+                source: source,
+                receipt_email: email
             })
-        console.log(order)
-            res.status(201).json(order)
-          }
-        } 
-    catch (err) {
-        return res.status(500).json({msg: err.message})
+            if(!charge) throw Error('Payment failed');
+            if(charge){
+                const order = await Order.create({
+                    userId,
+                    items: cart.items,
+                    bill: cart.bill
+                });
+                const data = await Cart.findByIdAndDelete({_id:cart.id});
+                return res.status(201).send(order);
+            }
+        }
+        else{
+            res.status(500).send("You do not have items in cart");
+        }
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send("Something went wrong");
     }
 }
-exports. getOrderById = catchAsync(async (req, res, next) => {
-    const order = await Order.findById(req.params.id).populate( 'user',
-    ' email')
-  
-    if (order) {
-        console.log(order)
-      res.status(200).json(order)
-    } else {
-      res.status(404)
-      throw new Error('Order not Found')
-    }
-  })
-    
-  exports. updateOrderToPaid = catchAsync(async (req, res) => {
-    const order = await Order.findById(req.params.id)
-  
-    if (order) {
-      order.isPaid = true
-      order.paidAt = Date.now()
-      order.paymentResult = {
-        id: req.body.id,
-        status: req.body.status,
-        update_time: req.body.update_time,
-        email_address: req.body.user.email_address,
-      }
-  
-      const updatedOrder = await order.save()
-      res.status(200).json(updatedOrder)
-    } else {
-      res.status(404)
-      throw new Error('Order not Found')
-    }
-  })
-    
-  exports. getMyOrders = catchAsync(async (req, res) => {
-    const orders = await Order.find({ user: req.userId })
-  
-    res.status(200).json(orders)
-  })
-  
-
-
-
-

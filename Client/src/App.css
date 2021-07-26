@@ -1,9 +1,51 @@
+/*css body*/
 body{
   padding:0;
   margin:0;
+  font-family: 'Roboto', sans-serif; 
 }
+h1,h2{
+  font-family: 'Roboto', sans-serif; 
+  font-size:25px;
+  font-style: italic;
+  color:black;
+  text-align: center;
+}
+h5,h6{
+  font-family: 'Roboto', sans-serif; 
+  font-size:25px;
+  font-style: italic;
+}
+p{
+  font-family: 'Roboto', sans-serif; 
+  font-size:15px;
+  font-style: italic;
+}
+.card-title{
+  font-family: 'Roboto', sans-serif; 
+  font-size:25px;
+  font-style: italic;
+}
+
+/*css navbar*/
+.nav{
+  color:black;
+  font-family: 'Roboto', sans-serif;
+  
+}
+.name{
+  font-family: 'Roboto', sans-serif;
+  font-size:15px;
+  font-weight: bold;
+  color:rgb(81, 148, 211);
+}
+
+
 /*css Home page*/
 .link{
+  text-decoration: none;
+}
+.link:hover{
   text-decoration: none;
 }
 .logo{
@@ -13,30 +55,229 @@ body{
   width:200;
   height:200;
 }
-.name{
-  font-size:15px;
-font-weight: bold;
-  color:rgb(81, 148, 211);
+.d-block {
+  display: block;
+ 
+  margin-left:auto;
+  margin-right:auto;
+  width:80%;
 }
-.basket{
-  width:25px;
+.home-conseil {
+  display: grid;
+  grid-template-columns: 80% 80% ;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.card1 {
+  background-color: #444;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  margin:auto;
+    width: 100%;
+    height: auto;
+  
+
+}
+.box1{
+ display:block;
+ margin-left: auto;
+ margin-right: auto;
+
+}
+/*.home-conseil{
+  display:flex;
+  flex-wrap:wrap;
+  align-content: space-between;
+ 
+}
+
+.home-conseil > .card1 {
+  background-color: #f1f1f1;
+  width: 50%;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+/*
+}*/
+
+
+/*css page conseils*/
+.container{
+  display:flex;
+ flex-wrap:row;
+  justify-content: flex-start;
+
 }
 .conseil1{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width:40%;
+  width:70%;
 }
-.d-block {
+
+.img1{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width:80%;
+  width:40%;
 }
+.img2{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:50%;
+
+}
+
+.conseil2{
+  display:block;
+  margin-left: auto;
+    margin-right: auto;
+    width:40%;
+  }
+  .img3{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:30%;
+  
+  }
+  .conseil3{
+    display:block;
+    margin-left: auto;
+      margin-right: auto;
+      width:60%;
+    }
+    .img4{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width:40%;
+     
+    }
+    .conseil4{
+      display:block;
+      margin-left: auto;
+        margin-right: auto;
+        width:50%;
+      }
+.para{
+  display:block;
+  margin-left: auto;
+  margin-right:auto;
+  width:80%
+}
+
+/*css contact*/
+
+.contact{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  font-style: italic;
+  color:black;
+  text-align: center;
+}
+
 .input{
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Roboto', sans-serif;
   display:flex;
   flex-direction:row;
   align-items:baseline;
  justify-content:space-between;
 }
+
+
+
+/*css card items*/
+
+.card-group{
+  display: flex;
+  justify-content: space-around;
+  align-content: space-between
+ 
+
+}
+.card-group>.product{
+  background-color: #f1f1f1;
+  width:200px;
+  padding:10px;
+  margin: 10px;
+   border-radius: 5px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+/*.item-img{
+  -webkit-transition: all 1s ease ;
+  transition: all 1s ease ;
+ 
+   
+    }
+.item-img:hover{
+    -webkit-transform:scale(1.25) ; 
+    
+    transform:scale(1.25);}*/
+    .title{
+      color:grey;
+      font-size:25px;
+     font-style: italic;
+     font-family: 'Roboto', sans-serif;
+  
+    }
+    .title:hover{
+      color:rgb(226, 43, 134);
+    }
+    .price{
+      color:grey;
+      font-size:15px;
+     font-style: italic;
+     font-family: 'Roboto', sans-serif;
+    }
+    .category{
+      color:grey;
+      font-size:15px;
+     font-style: italic;
+     font-family: 'Roboto', sans-serif;
+    }
+   
+    .title1{
+      font-size:25px;
+     font-style: italic;
+     font-family: 'Roboto', sans-serif;
+     color:grey;
+    }
+   .price1{
+    
+    font-size:20px;
+   font-style: italic;
+   color:rgb(226, 43, 134);
+   font-family: 'Roboto', sans-serif;
+
+   }
+   .desc,.categ,.stock{
+    font-size:20px;
+    font-style: italic;
+    color:grey;
+   }
+  .btn{
+    font-size:20px;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+
+  }
+  .Area{
+    max-width:fit-content;
+    -webkit-transition: all 1s ease ;
+  transition: all 1s ease ;
+  }
+  .Area:hover{
+    -webkit-transform:scale(1.25) ; 
+    
+    transform:scale(1.25);}
