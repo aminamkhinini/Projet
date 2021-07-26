@@ -5,6 +5,7 @@ import {Card, Alert, Container} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { getCart, deleteFromCart } from '../actions/cartAction';
 import Checkout from '../components/Checkout';
+import { addToCart} from '../actions/cartAction'
 import { checkout } from '../actions/orderAction'
 ;
 import { useSelector} from 'react-redux'
@@ -39,6 +40,9 @@ export default function Cart() {
         await getCart(id);
         
         
+    }
+    const addCartItems=async(id, productId, quantity)=>{
+      await  addToCart(id, productId, quantity);
     }
     
     const onDeleteFromCart = (id, itemId) => {

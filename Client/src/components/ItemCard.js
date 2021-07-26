@@ -33,7 +33,7 @@ export default function ItemCard({item}) {
         <CardMedia
           component="img"
           alt="image"
-          height="400"
+         // height="400"//
        
           image={item.images}
           title="image product"

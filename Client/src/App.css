@@ -64,7 +64,7 @@ p{
 }
 .home-conseil {
   display: grid;
-  grid-template-columns: 80% 80% ;
+  grid-template-columns: 50% 50% ;
   grid-gap: 10px;
   background-color: #fff;
   color: #444;
@@ -224,6 +224,9 @@ p{
     -webkit-transform:scale(1.25) ; 
     
     transform:scale(1.25);}*/
+    .item-img{
+      width:100%;
+    }
     .title{
       color:grey;
       font-size:25px;

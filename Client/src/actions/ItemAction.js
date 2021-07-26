@@ -7,7 +7,9 @@ import {
   UPDATE_ITEM_SUCCESS ,
   UPDATE_ITEM_FAIL ,
   DELETE_ITEM_SUCCESS ,
-  DELETE_ITEM_FAIL 
+  DELETE_ITEM_FAIL ,
+  ADD_IMAGE_SUCCESS,
+ ADD_IMAGE_FAIL
 } from "./types";
 import axios from "axios";
 
@@ -24,8 +26,11 @@ export const getItems = () => async (dispatch) => {
 
 
 
-export const add_item = (item )=> async (dispatch) => {
- 
+export const add_item = (item)=> async (dispatch) => { 
+  //const formData = new FormData()
+ //formData.append('baby',file)
+ //formData.append('data',//JSON.stringify(data))
+console.log(item)
 
   try {
     const res = await axios.post("/item/newItem", item, {
@@ -38,7 +43,21 @@ export const add_item = (item )=> async (dispatch) => {
   }
 };
 
+export const addImage =(image)=> async (dispatch) =>{
+  
+ const formData = new FormData()
+ formData.append('baby',image)
+ console.log(Array.from(formData))
+ try {
+ const res = await axios.post("/img", formData, {
+    headers: { "auth-token": localStorage.getItem("auth-token") },
+  });
+ dispatch({type:ADD_IMAGE_SUCCESS, payload:res.data});
 
+} catch (error) {
+  dispatch({ type:ADD_IMAGE_FAIL, payload: error?.response?.data?.message });
+}
+};
 
 
 export const deleteItem = (id) => (dispatch) => {

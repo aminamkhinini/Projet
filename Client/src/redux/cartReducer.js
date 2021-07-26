@@ -18,21 +18,21 @@ export default function(state=initialState, action){
             return {
                 ...state,
                 cart: action.payload,
-                errors: null,
+                errors: null
             }
 
         case ADD_TO_CART_SUCCESS:
             return {
                 ...state,
                 cart: action.payload,
-                errors: null,
+                errors: null
             }
 
         case DELETE_FROM_CART_SUCCESS:
             return {
                 ...state,
                 cart: action.payload,
-                errors: null,
+                errors: null
             }
           
 

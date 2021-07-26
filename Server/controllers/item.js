@@ -15,15 +15,13 @@ const Item= require('../models/Itemschema');
    
     exports.post_item= async(req, res) =>{
         try {
-            const {item_id, title, price, description, images, category, countInStock} = req.body;
+            console.log('hello')
+            const { title, price, description, images, category, countInStock} = req.body;
             if(!images) return res.status(400).json({msg: "No image upload"})
 
-            const item = await Item.findOne({item_id})
-            if(item)
-                return res.status(400).json({msg: "This item already exists."})
-
+            
             const newItem = new Item({
-                item_id , title: title.toLowerCase(), price, description, images, category,countInStock
+               title: title.toLowerCase(), price, description, images, category,countInStock
             })
               
             await newItem.save()

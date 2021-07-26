@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 export default function Itemsample() {
     const classes = useStyles();
   
-    const [item, setitem ] = useState([ 
+    const [item, setItem ] = useState([ 
       {
        title:'chicco biberon',
       price:26,
@@ -40,6 +40,7 @@ export default function Itemsample() {
     return (
         <div> 
 <CardGroup className="card-group">
+   {item.map(item=>(
  <Card className={classes.root} >
       <CardActionArea className="item-img">
         <CardMedia
@@ -67,6 +68,7 @@ export default function Itemsample() {
 
     </Card>
             
+   ))}
 
 
 </CardGroup>

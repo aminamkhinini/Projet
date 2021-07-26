@@ -14,7 +14,8 @@ import {addToCart} from '../actions/cartAction';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+//redux
+import {useDispatch} from 'react-redux';
 
 
 const useStyles = makeStyles({
@@ -30,16 +31,20 @@ const useStyles = makeStyles({
   },
 });
 
-const handleAddToCart = async (id, productId) => {
-  await addToCart(id, productId, 1);
-  alert ('Item added to Cart');
-}
+
 
        
-const ItemDetails = ({match, history }) => {
-  
+export default function ItemDetails  ({match, history }) {
+  const dispatch=useDispatch();
+  const classes = useStyles();
+ 
+ 
+
+  const handleAddToCart = async (id, productId,quantity) => {
+    dispatch (addToCart(id, productId, 1));
+    alert ('Item added to Cart');
+  }
   const items = useSelector(state => state.items.items)
-    const classes = useStyles();
    console.log(items)
   
   
@@ -57,7 +62,7 @@ const ItemDetails = ({match, history }) => {
         <CardMedia
           component="img"
           alt="image"
-          height="300"
+          height="100%"
           image={items.find((item) => item._id === match.params.id).images}
           title="images item"
         
@@ -99,4 +104,3 @@ const ItemDetails = ({match, history }) => {
     </div>
   );
 };
-export default ItemDetails;

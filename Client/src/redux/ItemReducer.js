@@ -28,6 +28,7 @@ const ItemReducer = (state = initState, action) => {
           ...state,
          items: [action.payload, ...state.items]
       }  
+      
                        
         
     case UPDATE_ITEM_SUCCESS:
@@ -48,7 +49,7 @@ const ItemReducer = (state = initState, action) => {
     case DELETE_ITEM_SUCCESS:
         return{
             ...state,
-           items: state.products.filter(item => item._Id!==action.payload) ,               
+           items: state.products.filter(item => item._id!==action.payload) ,               
     
         errors: null,
       };

@@ -6,7 +6,7 @@ import {useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux';
 
 
-import { add_item} from '../actions/ItemAction';
+import { addImage, add_item} from '../actions/ItemAction';
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -51,38 +51,27 @@ function rand() {
     const handleClose = () => {
       setOpen(false);
     };
-  
-    const handleChange = (e) => {
-        setInput({...input,[e.target.name]:e.target.value})
-      };
-    
-const [newItem , setNewItem ] = useState(
+    const {imagelink} = useSelector(state => state.image)
+    const [item , setItem ] = useState(
 
-    {product_id:'',
-        title:'',
-        price:'',
-        description:'',
-        images:'',
-        category:'',
-        countInStock:''
-    } 
-   )
+      {item_id:'',
+          title:'',
+         price:'',
+         description:'',
+         category:'',
+         countInStock:''
+     } 
+    )
+    const handleChange = (e) => {
+        setItem({...item,[e.target.name]:e.target.value})
+      };
+
 
 const history = useHistory()
+
   const handleSubmit = async (e) => {
        e.preventDefault();
-
-       const newItem = {
-        product_id:'',
-        title:'',
-        price:'',
-        description:'',
-        images:'',
-        category:'',
-        countInStock:''
-       }
-
-      dispatch(add_item(newItem)) ;
+      dispatch(add_item({...item,images:imagelink}));
       history.push("/items")
 
        alert('Item added successfully');
@@ -107,8 +96,8 @@ const history = useHistory()
       <label for="avatar">Choose image:</label>
 
       <input type="file"
-       id="baby" name="baby"
-       accept="image/png, image/jpeg" onChange={handleChange}/>
+       id="baby" name="image"
+       accept="image/png, image/jpeg" onChange={(e)=>dispatch(addImage(e.target.files[0]))}/>
  
     </form>
     <label className="input">Title:     </label>
@@ -119,7 +108,7 @@ const history = useHistory()
       <input type='text'palceholder='description' name='description'onChange={handleChange}/>
       <label for="pet-select">Choose a category</label>
 
-<select name="category" id="category-select">
+<select onChange={handleChange} name="category" id="category-select">
     <option value="">--Please choose a category--</option>
     <option value="alimentation">Alimentation</option>
     <option value="Sommeil">Sommeil</option>
@@ -129,7 +118,7 @@ const history = useHistory()
     <option value="Sécurité">Sécurité</option>
     <option value="Idées Cadeaux">Idées Cadeaux</option>
 </select>
-<input type='text'palceholder=' countInStock' name=' countInStock'onChange={handleChange}/>
+<input type='text'palceholder='countInStock' name='countInStock'onChange={handleChange}/>
       <label className="input"> countInStock:     </label>
 
       
