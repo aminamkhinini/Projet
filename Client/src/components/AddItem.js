@@ -39,9 +39,9 @@ function rand() {
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
-    const [auth, setAuth] = React.useState(true);
+
     const dispatch=useDispatch();
-    const[input, setInput] = useState();
+   
 
     
     const handleOpen = () => {
@@ -52,15 +52,15 @@ function rand() {
       setOpen(false);
     };
     const {imagelink} = useSelector(state => state.image)
-    const [item , setItem ] = useState(
+    const [item , setItem ] = useState( {
+      title:'',
+     price:'',
+     description:'',
+     category:'',
+     countInStock:''
+ } 
 
-      {item_id:'',
-          title:'',
-         price:'',
-         description:'',
-         category:'',
-         countInStock:''
-     } 
+      
     )
     const handleChange = (e) => {
         setItem({...item,[e.target.name]:e.target.value})
@@ -70,6 +70,7 @@ function rand() {
 const history = useHistory()
 
   const handleSubmit = async (e) => {
+    console.log({...item,images:imagelink})
        e.preventDefault();
       dispatch(add_item({...item,images:imagelink}));
       history.push("/items")
@@ -80,7 +81,7 @@ const history = useHistory()
     return (
         
             <div>
-                <Button type="button" onClick={handleOpen} variant="contained" color="secondary" >
+                <Button type="button" onClick={handleOpen} variant="outlined" color="secondary" >
        Ajouter un nouveau article
       </Button>
       <Modal
@@ -116,7 +117,7 @@ const history = useHistory()
     <option value="Hygiène et Bain">Hygiène et Bain</option>
     <option value="Jeux et Jouets">Jeux et Jouets</option>
     <option value="Sécurité">Sécurité</option>
-    <option value="Idées Cadeaux">Idées Cadeaux</option>
+    <option value="Literie et Déco">Literie et Déco</option>
 </select>
 <input type='text'palceholder='countInStock' name='countInStock'onChange={handleChange}/>
       <label className="input"> countInStock:     </label>

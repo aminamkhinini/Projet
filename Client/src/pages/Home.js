@@ -1,4 +1,4 @@
-import { Carousel, Card, CardGroup } from "react-bootstrap";
+import { Carousel, Card, CardGroup,Row,Col, CardDeck } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
@@ -33,7 +33,7 @@ const Home = () => {
         <Carousel.Item>
           <img
             className="d-block w-90"
-            src="photos/baby1.jpg"
+            src="photos/bebe.jpg"
             alt="First slide"
           />
         </Carousel.Item>
@@ -52,55 +52,54 @@ const Home = () => {
           />
         </Carousel.Item>
       </Carousel>
-
+<br/>
       <h1> Nos Conseils</h1>
-      <CardGroup className="home-conseil">
-        <div className="box1"> 
-        <Card style={{ width: "400px" }} className="card1">
-          <Card.Img variant="top" src="images/collier1.jpg" />
+  <br/>    
+      <CardDeck className="home-conseil">
+      
+        <Card  style={{ width: "400px" ,height:"500px"}} className="card1">
+          <Card.Img variant="top" src="images/collier1.jpg" className="img" />
           <Card.Body>
             <Card.Title>Bébé a mal aux dents:que penser du collier d’ambre ? </Card.Title>
-
-            <Button variant="primary" >
-            <Link to={`/Conseils`} className="link"> Read more</Link>  
-            </Button>
-          </Card.Body>
-        </Card>
-        <Card style={{ width: "400px" }}className="card1">
-          <Card.Img variant="top" src="images/femme.jpg" styele={{width:"225px",height:"225 px"}}/>
-          <Card.Body>
-            <Card.Title>L’alimentation pendant la grossesse :</Card.Title>
-
-            <Button variant="primary" >
-            <Link to={`/Conseils`} className="link">Voir plus de détails</Link>  
-            </Button>
-          </Card.Body>
-        </Card>
-        </div>
-        <div className="box1"> 
-        <Card style={{ width: "400px" }}className="card1">
-          <Card.Img variant="top" src="images/enceinte.jpg" />
-          <Card.Body>
-            <Card.Title>Comment bien dormir pendant la grossesse</Card.Title>
-
             <Button variant="primary" >
             <Link to={`/Conseils`} className="link"> Voir plus de détails</Link>  
             </Button>
           </Card.Body>
         </Card>
-        <Card style={{ width: "400px" }}className="card1">
-          <Card.Img variant="top" src="images/fievre.jpg" />
+        <Card  style={{ width: "400px" ,height:"500px"}} className="card1">
+          <Card.Img variant="top" src="images/femme.jpg"className="img" />
           <Card.Body>
-            <Card.Title>La Fièvre</Card.Title>
-
+            <Card.Title>L’alimentation pendant la grossesse :</Card.Title>
             <Button variant="primary" >
             <Link to={`/Conseils`} className="link">Voir plus de détails</Link>  
             </Button>
           </Card.Body>
         </Card>
-        </div>
-      </CardGroup>
+  
+      
+        <Card  style={{ width: "400px" ,height:"500px"}}className="card1">
+          <Card.Img variant="top" src="images/enceinte.jpg"className="img" />
+          <Card.Body>
+            <Card.Title>Comment bien dormir pendant la grossesse</Card.Title>
+            <Button variant="primary" >
+            <Link to={`/Conseils`} className="link"> Voir plus de détails</Link>  
+            </Button>
+          </Card.Body>
+        </Card>
+        <Card   style={{ width: "400px" ,height:"500px"}}className="card1">
+          <Card.Img variant="top" src="images/fievre.jpg" className="img"/>
+          <Card.Body>
+            <Card.Title>La Fièvre</Card.Title>
+            <Button variant="primary" >
+            <Link to={`/Conseils`} className="link">Voir plus de détails</Link>  
+            </Button>
+          </Card.Body>
+        </Card>
+       
+      </CardDeck>
+      <br/>
       <h1> babylando</h1>
+      <br/>
       <Card>
         <Card.Body>
           La boutique complète pour votre bébé Offrant un éventail complet
@@ -119,13 +118,14 @@ const Home = () => {
           liste de naissance.
         </Card.Body>
       </Card>
+      <br/>
 <h1>Nos Articles</h1>
- <CardGroup className="card-group">
+<br/>
         
     <Itemsample></Itemsample>        
 
 
-</CardGroup>
+
 <footer> 
       <Card style={{ backgroundColor: "pink" }}>
         <Card.Body>

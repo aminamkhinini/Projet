@@ -23,6 +23,7 @@ export const ADD_IMAGE_SUCCESS = 'ADD_IMAGE_SUCCESS';
 export const  ADD_IMAGE_FAIL = 'ADD_IMAGE_FAIL';
 export const GET_IMAGE_SUCCESS='GET_IMAGE_SUCCESS';
 export const GET_IMAGE_FAIL='GET_IMAGE_FAIL';
+
 // cart
 export const GET_CART_SUCCESS         = "GET_CART_SUCCESS";
 export const GET_CART_FAIL            = "GET_CART_FAIL";

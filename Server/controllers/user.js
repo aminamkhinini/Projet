@@ -38,7 +38,7 @@ exports.login = async(req,res)=>{
  // If login success , create access token and refresh token
   const token= await jwt.sign({email, id:existUser._id},process.env.SECRET_KEY);
   res.status(200).json({User: existUser,token});
-  console.log({User: existUser,token})
+
 } catch (error) {;
     res.status(500).json({message:`something went wrong:${error}`})
   }

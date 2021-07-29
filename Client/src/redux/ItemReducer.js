@@ -33,23 +33,23 @@ const ItemReducer = (state = initState, action) => {
         
     case UPDATE_ITEM_SUCCESS:
     
-        const { id, data } = action.payload; 
+        //const { _id, data } = action.payload; 
     return {
         ...state,
-        items:state.items.map(item=> {
-            if(item._id===id){
-              item = data;
+       items:state.items.map((item)=> {
+            if(item._id===action.payload._id){
+              item = action.payload;
             }
-        }),
+        }),...state.items,
 
         errors: null,
       };
 
-     
+      
     case DELETE_ITEM_SUCCESS:
         return{
             ...state,
-           items: state.products.filter(item => item._id!==action.payload) ,               
+           items: state.items.filter(item => item._id!==action.payload),               
     
         errors: null,
       };

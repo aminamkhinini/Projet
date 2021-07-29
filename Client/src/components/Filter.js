@@ -1,8 +1,10 @@
-import React from "react"; 
- function Filter({searchTerm, handleChange}) {
+import React, { useState} from "react"; 
 
-  const handleChangeterm = event => {
-    handleChange(event.target.value);
+ function Filter() {
+
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const handleChange = event => {
+    setSearchTerm(event.target.value);
   };
   return (
     
@@ -11,7 +13,7 @@ import React from "react";
         type="text"
         placeholder="Search"
         value={searchTerm}
-        onChange={handleChangeterm}
+        onChange={handleChange}
           
         /> 
     
@@ -22,3 +24,4 @@ import React from "react";
      
 }
 export default Filter; 
+

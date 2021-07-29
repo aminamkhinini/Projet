@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 
 
        
-export default function ItemDetails  ({match, history }) {
+export default function ItemDetails  ({match, history}) {
   const dispatch=useDispatch();
   const classes = useStyles();
  
@@ -90,14 +90,15 @@ export default function ItemDetails  ({match, history }) {
         
         </CardContent>
         </Card>
-    
+   
+  
         <Button  type="submit" 
-            variant="contained"
-            color="secondary"onClick={handleAddToCart} className="btn"> Ajouter à la carte </Button> {' '}
- 
-        <Button variant="contained"
+            variant="outlined"
+            color="secondary"onClick={handleAddToCart} className="btn"> Ajouter au panier </Button>
+ <br/>
+        <Button variant="outlined"
             color="secondary" onClick={() => history.push("/cart")}>
-     carte
+   Panier
         </Button>
       
       

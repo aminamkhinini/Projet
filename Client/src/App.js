@@ -24,30 +24,17 @@ import Conseil4 from './pages/Conseil4';
 import Cart from './pages/cart';
 import Orders from './pages/Orders';
 
+
 function App() {
-  const [item, setitem ] = useState([ 
-    {
-     title:'chicco biberon',
-    price:26,
-    images:'http://localhost:5000/uploads/1626001467152-CHICCO BIBERON EN PLASTIQU...',
-    },
-    {
-      title:'4 protection de coins',
-     price:13,
-     images:'http://localhost:5000/uploads/1626457320207-4-protection-de-coins.jpg',
-     },
-     {
-      title:'chaise haute mini plus',
-     price:295,
-     images:'http://localhost:5000/uploads/1626457026029-chaise-haute-mini-plus.jpg',
-     },
   
-  ]
-  );
+ 
   return (
     <div className="App">
       
       <Navbar/>
+       
+     
+
       
       <Switch> 
      <Route exact path='/Register' component ={Register}/>

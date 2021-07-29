@@ -27,7 +27,7 @@ function Copyright() {
     );
   }
 
-export default function Cart() {
+export default function Cart(match) {
    
     
   
@@ -76,7 +76,12 @@ export default function Cart() {
                                 <Card style={{ width: '18rem' }}>
 
                            <Card.Body>
-                           <Card.Title>{item.name}</Card.Title>
+                           <Card.Img component="img"
+          
+          src={item.images}
+          
+         />
+                           <Card.Title>{item.title}</Card.Title>
                           <Card.Subtitle className="mb-2 text-muted">Rs.{item.price}TND</Card.Subtitle>
                           <Card.Text>
                           Quantity - {item.quantity}

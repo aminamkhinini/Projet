@@ -44,7 +44,7 @@ const Items = () => {
         <CardGroup className="card-group">
         
             {items && items.map((item)=> {
-            return <ItemCard key={item._id}item={item} className="product"/>})}
+            return <ItemCard key={item? item._id:"rr"} item={item} className="product"/>})}
 
 
 </CardGroup>

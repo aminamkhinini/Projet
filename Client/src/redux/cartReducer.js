@@ -22,10 +22,23 @@ export default function(state=initialState, action){
             }
 
         case ADD_TO_CART_SUCCESS:
-            return {
-                ...state,
-                cart: action.payload,
-                errors: null
+            const item = action.payload
+            const existItem = state.cartItems.find(
+                (x) => x.product === item.product
+            )
+
+            if (existItem) {
+                return {
+                    ...state,
+                    cartItems: state.cartItems.map((x) =>
+                        x.product === existItem.product ? item : x
+                    ),
+                }
+            } else {
+                return {
+                    ...state,
+                    cartItems: [...state.cartItems, item],
+                }
             }
 
         case DELETE_FROM_CART_SUCCESS:

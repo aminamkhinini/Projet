@@ -22,7 +22,7 @@ export default function Itemsample() {
       {
        title:'chicco biberon',
       price:26,
-      images:'http://localhost:5000/uploads/1626001467152-CHICCO BIBERON EN PLASTIQU...',
+      images:'http://localhost:5000/uploads/1626001467152-CHICCO BIBERON EN PLASTIQUE BLEU 0M+150ML.jpg',
       },
       {
         title:'4 protection de coins',

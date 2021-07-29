@@ -91,11 +91,22 @@ export default function NavBar() {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const [searchTerm, setSearchTerm] = React.useState("");
 
+  const items= useSelector(state =>state.items.items)
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState([]);
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
+  React.useEffect(() => {
+    const results = items.filter(elm =>
+      elm.title.toLowerCase().includes((searchTerm).toLowerCase()))
+    setSearchResults(results);
+  }, [searchTerm]);
+
+ 
+
+  
   return (
     <div className={classes.grow}>
       <AppBar position="sticky" style={{backgroundColor:"pink",color:"black", height:60}}>
@@ -175,7 +186,7 @@ export default function NavBar() {
                 </Button>
               </>
             )}
-            {user ? <span className="name"> {user.firstname} {user.lastname}  </span> : <> </>}
+            {user ? <span className="name"> {user.firstname}   </span> : <> </>}
             </Menu>
           
           
@@ -188,7 +199,7 @@ export default function NavBar() {
         
         </Toolbar>
       </AppBar>
-      
+    
     </div>
   );
 }

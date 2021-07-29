@@ -20,10 +20,17 @@ export const getCart = (id) => async (dispatch) => {
   }
 };
 
-export const addToCart = (id, productId, quantity) => async(dispatch) => {
+export const addToCart = (id, qty) => async(dispatch) => {
   try {
-    const res = await axios.post(`/cart/${id}`, { productId, quantity });
-    dispatch({ type: ADD_TO_CART_SUCCESS, payload: res.data });
+    const { data } = await axios.get(`/items/${id}`);
+    dispatch({ type: ADD_TO_CART_SUCCESS, payload: {
+     item: data._id,
+         title: data.title,
+          image: data.image,
+          price: data.price,
+          countInStock: data.countInStock,
+          qty, }});
+          localStorage.setItem('cartItems', JSON.stringify.cart.cartItems)
   } catch (error) {
     dispatch({
       type: ADD_TO_CART_FAIL,

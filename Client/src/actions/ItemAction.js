@@ -9,7 +9,8 @@ import {
   DELETE_ITEM_SUCCESS ,
   DELETE_ITEM_FAIL ,
   ADD_IMAGE_SUCCESS,
- ADD_IMAGE_FAIL
+ ADD_IMAGE_FAIL,
+ FILTER_ITEM,
 } from "./types";
 import axios from "axios";
 
@@ -27,11 +28,7 @@ export const getItems = () => async (dispatch) => {
 
 
 export const add_item = (item)=> async (dispatch) => { 
-  //const formData = new FormData()
- //formData.append('baby',file)
- //formData.append('data',//JSON.stringify(data))
-console.log(item)
-
+ 
   try {
     const res = await axios.post("/item/newItem", item, {
       headers: { "auth-token": localStorage.getItem("auth-token") },
@@ -39,7 +36,7 @@ console.log(item)
    dispatch({type:ADD_ITEM_SUCCESS, payload:res.data});
   
   } catch (error) {
-    dispatch({ type:  ADD_ITEM_FAIL, payload: error?.response?.data?.message });
+    dispatch({ type: ADD_ITEM_FAIL, payload: error?.response?.data?.message });
   }
 };
 
@@ -60,29 +57,33 @@ export const addImage =(image)=> async (dispatch) =>{
 };
 
 
-export const deleteItem = (id) => (dispatch) => {
+export const deleteItem = (id) => async (dispatch) => {
   try {
-    const res = axios.delete(`/item/${id}`);
+    const res = await axios.delete(`/item/${id}`,{ headers: { "auth-token": localStorage.getItem("auth-token")}});
     dispatch({
       type:  DELETE_ITEM_SUCCESS,
       payload: id,
     });
+    dispatch(getItems())
   } catch (error) {
     dispatch({
       type: DELETE_ITEM_FAIL,
       payload: error?.response?.data?.message,
     });
+  
   }
 };
 
-export const updateItem = (id, item) => (dispatch) => {
+export const updateItem = ( item) =>async (dispatch) => {
   try {
-    const res = axios.put(`/items/${id}`, item);
+    console.log('item to update: ',item)
+    const res = await axios.put(`/item/${item._id}`, item,{ headers: { "auth-token": localStorage.getItem("auth-token")}});
 
     dispatch({
       type:  UPDATE_ITEM_SUCCESS,
-      payload: Promise.all([id, res.data]),
+      payload:res.data.updatedProduct,
     });
+    dispatch(getItems())
   } catch (error) {
     dispatch({
       type: UPDATE_ITEM_FAIL,
