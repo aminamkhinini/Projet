@@ -1,5 +1,5 @@
 const Category = require('../models/Categoryschema')
-const Item = require('../models/Itemschema')
+const Product = require('../models/Productschema')
 
 
    exports.getCategories= async(req, res) =>{

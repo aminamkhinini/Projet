@@ -30,6 +30,10 @@ p{
 * {
   box-sizing: border-box;
 }
+main {
+  min-height: 80vh;
+}
+
 
 /*css navbar*/
 .nav{
@@ -116,7 +120,7 @@ p{
 .container{
   display:flex;
  flex-wrap:row;
-  justify-content: flex-start;
+  justify-content:center;
 
 }
 .conseil1{

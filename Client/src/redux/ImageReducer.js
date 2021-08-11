@@ -16,7 +16,8 @@ import {
     switch (action.type) {
       case  GET_IMAGE_SUCCESS:
       
-        return { imagelink: action.payload, errors: null };
+        return { imagelink: action.payload,
+           errors: null };
      
         case  ADD_IMAGE_SUCCESS :
           return{

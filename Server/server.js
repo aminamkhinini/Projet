@@ -21,9 +21,9 @@ require('dotenv').config({path:'./.env'});
 app.use('/user',require('./routes/user'));
 app.use('/category',require('./routes/category'));
 app.use('/img',require('./routes/upload'));
-app.use('/item',require('./routes/item'));
-app.use('/order',require('./routes/order'));
-app.use('/cart',require('./routes/cart'));
+app.use('/product',require('./routes/product'));
+app.use('/orders',require('./routes/order'));
+//app.use('/cart',require('./routes/cart'));
 
 
 // mongoose connect

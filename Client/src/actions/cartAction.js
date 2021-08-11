@@ -1,53 +1,47 @@
-import axios from "axios";
+import axios from 'axios'
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS, CART_SAVE_PAYMENT_METHOD } from './types'
 
-import {
-  GET_CART_SUCCESS,
-  GET_CART_FAIL,
-  ADD_TO_CART_SUCCESS,
-  ADD_TO_CART_FAIL,
-  DELETE_FROM_CART_SUCCESS,
-  DELETE_FROM_CART_FAIL,
-
-} from "./types";
-
-export const getCart = (id) => async (dispatch) => {
-  try {
-   
-    const res = await axios.get(`/cart/${id}`);
-    dispatch({ type: GET_CART_SUCCESS, payload: res.data });
-  } catch (error) {
-    dispatch({ type: GET_CART_FAIL, payload: error?.response?.data?.message });
-  }
-};
-
-export const addToCart = (id, qty) => async(dispatch) => {
-  try {
-    const { data } = await axios.get(`/items/${id}`);
-    dispatch({ type: ADD_TO_CART_SUCCESS, payload: {
-     item: data._id,
-         title: data.title,
-          image: data.image,
-          price: data.price,
-          countInStock: data.countInStock,
-          qty, }});
-          localStorage.setItem('cartItems', JSON.stringify.cart.cartItems)
-  } catch (error) {
+const cartItemsFromStorage = localStorage.getItem('cartItems')
+    ? JSON.parse(localStorage.getItem('cartItems'))
+    : []
+export const addToCart = (id, qty) => async (dispatch,getstate) => {
+    const { data } = await axios.get(`/product/${id}`)
+    console.log(data)
     dispatch({
-      type: ADD_TO_CART_FAIL,
-      payload: error?.response?.data?.message,
-    });
-  }
-};
+        type: CART_ADD_ITEM,
+        payload: {
+            product: data._id,
+            title: data.title,
+            images: data.images,
+            price: data.price,
+            category:data.category,
+            countInStock: data.countInStock,
+            qty,
+        },
+    })
+    localStorage.setItem('cartItems', JSON.stringify(getstate().cart.cartItems))
+}
 
-export const deleteFromCart = (userId, productId) => async(dispatch) => {
-  try {
-    const res = await axios.delete(`/cart/${userId}/${productId}`);
-    dispatch({ type: DELETE_FROM_CART_SUCCESS, payload: res.data });
-  } catch (error) {
+export const removeFromCart = (id) => (dispatch,getstate) => {
     dispatch({
-      type: DELETE_FROM_CART_FAIL,
-      payload: error?.response?.data?.message,
-    });
-  }
-};
+        type: CART_REMOVE_ITEM,
+        payload: id,
+    })
+    localStorage.setItem('cartItems', JSON.stringify(getstate().cart.cartItems))
+}
 
+export const saveShippingAddress = (data) => (dispatch) => {
+    dispatch({
+        type: CART_SAVE_SHIPPING_ADDRESS,
+        payload: data,
+    })
+    localStorage.setItem('shippingAddress', JSON.stringify(data))
+}
+
+export const savePaymentMethod = (data) => (dispatch) => {
+    dispatch({
+        type: CART_SAVE_PAYMENT_METHOD,
+        payload: data,
+    })
+    localStorage.setItem('paymentMethod', JSON.stringify(data))
+}
