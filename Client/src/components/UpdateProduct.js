@@ -95,7 +95,7 @@ export default function UpdateProduct({ product }) {
                 placeholder="price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)} 
-              ></Form.Control>DNT
+              ></Form.Control>DT
             </Form.Group>
 
             <Form.Group controlId="description">
@@ -134,7 +134,7 @@ export default function UpdateProduct({ product }) {
             variant="outlined"
             color="secondary"
           >
-            modifier{" "}
+           enregistrer{" "}
           </Button>
           <br />
 

@@ -271,3 +271,14 @@ main {
     .nav1{
       position:static;
     }
+    /*CSS Admin*/
+    .card2{
+      grid-gap: 10px;
+      background-color: #444;
+     border-radius: 20px;
+     padding: 20px;
+     font-size: 100%;
+     margin:20px;
+     width: 300px;
+     height:600px;
+    }
