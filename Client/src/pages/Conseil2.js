@@ -1,13 +1,12 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import { Card } from "react-bootstrap";
+
 import {Link} from 'react-router-dom';
 const Conseil2 = () => {
   return (
     <div>
       <img src="logo/logoimg.png" alt="logo" className="logo" />
 
-      <h1> Alimentation pendant la grossesse </h1>
+      <h2> Alimentation pendant la grossesse </h2>
       <div className="container">
         <img variant="top" src="images/femme.jpg" className="img2" />
         <div className="conseil2">
@@ -67,7 +66,10 @@ const Conseil2 = () => {
         </p>
       </div>
 
-      
+      <Link  to='/Conseils'>
+            <h6>Revenir en Arrière </h6>
+            </Link>
+       
     </div>
   );
 };

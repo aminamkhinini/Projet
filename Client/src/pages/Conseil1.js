@@ -36,9 +36,9 @@ const Conseil1 = () => {
      
      
    
-      <h1> Bébé a mal aux dents : que penser du collier d’ambre ?</h1>
+      <h2> Bébé a mal aux dents : que penser du collier d’ambre ?</h2>
       <div className="container"> 
-      <img src="images/collier.jpg" alt="collier"  className="img1"/>
+      <img src="images/collier1.jpg" alt="collier"  className="img1"/>
       <div className="conseil1">
       <p >
         L’ambre est une résine de conifère fossilisée, dont la couleur varie en
@@ -92,7 +92,9 @@ const Conseil1 = () => {
         bébé, bien au chaud dans sa turbulette !</p>
         </div>
        
-        
+        <Link  to='/Conseils'>
+            <h6>Revenir en Arrière </h6>
+            </Link>
        
     </div>
   );

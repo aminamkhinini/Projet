@@ -8,10 +8,8 @@ import Button from "@material-ui/core/Button";
 function Copyright() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-         babylando
-        </Link>{' '}
+        {'Copyright © '} {'babylando'}
+        {' '}
         {new Date().getFullYear()}
         {'.'}
       </Typography>
@@ -19,14 +17,14 @@ function Copyright() {
   }
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <Card style={{ backgroundColor: "pink" }}>
         <Card.Body>
           <Card.Title className="card-title">Conseils</Card.Title>
           <Card.Text>
-          <Link to={`/Conseils`} className="link"> <h5>Bébé a mal aux dents : que penser du collier d’ambre ? </h5> </Link> 
-          <Link to={`/Conseils`} className="link"> <h5> La Fièvre</h5> </Link> 
-          <Link to={`/Conseils`} className="link"> <h5>Comment bien dormir pendant la grossesse </h5> </Link> 
+          <Link to={`/Conseils`} className="link"> <h6>Bébé a mal aux dents : que penser du collier d’ambre ? </h6> </Link> 
+          <Link to={`/Conseils`} className="link"> <h6> La Fièvre</h6> </Link> 
+          <Link to={`/Conseils`} className="link"> <h6>Comment bien dormir pendant la grossesse </h6> </Link> 
           </Card.Text>
 
           <Card.Title>Assistance</Card.Title>

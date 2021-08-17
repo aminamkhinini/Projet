@@ -35,7 +35,7 @@ const Order = ({ match, history }) => {
             return (Math.round(num * 100) / 100).toFixed(2)
         }
 
-        order.itemsPrice = addDecimals(
+     order.itemsPrice = addDecimals(
             order.orderItems.reduce(
                 (acc, item) => acc + item.price * item.qty,
                 0
@@ -49,10 +49,12 @@ const Order = ({ match, history }) => {
 
     useEffect(() => {
         const addPayPalScript = async () => {
-            const { data: clientId } = await axios.get('/config/paypal')
+            //const { data } = await axios.get('/config/paypal')
+        console.log(("order===",order))
+            const data = 'AQgRx2bzsyTh28GMqLus9zi3BPfELy6GCNMDirZN9kr8QpFCPQBDSgDwIqQgaUbIac93T45p0Uo0Ly0P' 
             const script = document.createElement('script')
             script.type = 'text/javascript'
-            script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD`
+            script.src = `https://www.paypal.com/sdk/js?client-id=${data}&currency=USD`
             script.async = true
             script.onload = () => {
                 setSdkReady(true)
@@ -77,31 +79,32 @@ const Order = ({ match, history }) => {
         // Update status of order to paid
         dispatch(payOrder(orderId, paymentResult))
     }
-const name = useSelector((state) => state.auth.user?.name)
-const email = useSelector((state) => state.auth.user?.email)
+    
+const name = useSelector((state) => state.auth.userInfo.user.name)
+const email = useSelector((state) => state.auth.userInfo.user.email)
     return loading ? (
         <Loader />
     ) : error ? (
         <Message variant='danger'>{error}</Message>
     ) : (
         <>
-            <h1>Order {orderId}</h1>
+            <h3>Commande {orderId}</h3>
             <Row>
-                <Col md={8}>
+                <Col md={7}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2>Shipping</h2>
+                            <h3>Expédition</h3>
                             <p>
-                                <strong>Name: </strong>
-                                {order.user?.name}
+                                <strong>Nom: </strong>
+                                {order.user && order.user.name}
                             </p>
                              
                             <p>
                                 <strong>Email: </strong>
-                                {order.user?.email}
+                                {order.user && order.user.email}
                             </p>
                             <p>
-                                <strong>Address: </strong>
+                                <strong>Addresse: </strong>
                                 {order.shippingAddress.address},{' '}
                                 {order.shippingAddress.city}{' '}
                                 {order.shippingAddress.postalCode},{' '}
@@ -112,35 +115,35 @@ const email = useSelector((state) => state.auth.user?.email)
                                     </Message>
                                 ) : (
                                     <Message variant='danger'>
-                                        Not Delivered
+                                        Non Deliveré
                                     </Message>
                                 )}
                             </p>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <h2>Payment Method</h2>
+                            <h2>Methode de Payment </h2>
                             <p>
-                                <strong>Method: </strong>
+                                <strong>Methode: </strong>
                                 {order.paymentMethod}
                                 {order.isPaid ? (
                                     <Message variant='success'>
                                         Paid on {order.paidAt}
                                     </Message>
                                 ) : (
-                                    <Message variant='danger'>Not Paid</Message>
+                                    <Message variant='danger'>Non Payé</Message>
                                 )}
                             </p>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <h2>Order Items</h2>
+                            <h3>Articles Commandés</h3>
                             {order.orderItems.length === 0 ? (
-                                <Message>Order is empty</Message>
+                                <Message>La Commande est vide</Message>
                             ) : (
                                 <ListGroup variant='flush'>
                                     {order.orderItems.map((item, index) => (
                                         <ListGroup.Item key={index}>
                                             <Row>
-                                                <Col md={1}>
+                                                <Col md={3}>
                                                     <Image
                                                         src={item.images}
                                                         alt={item.title}
@@ -149,15 +152,15 @@ const email = useSelector((state) => state.auth.user?.email)
                                                     />
                                                 </Col>
                                                 <Col>
-                                                    <Link
+                                                    <Link style={{fontFamily: 'Roboto, sans-serif',fontStyle: 'italic'}}
                                                         to={`/product/${item.product}`}
                                                     >
                                                         {item.title}
                                                     </Link>
                                                 </Col>
-                                                <Col md={4}>
-                                                    {item.qty} x  {item.price}DNT{' '}
-                                                    = {item.qty * item.price}DNT
+                                                <Col md={10}>
+                                                    {item.qty} x  {item.price}DT{' '}
+                                                    = {item.qty * item.price}DT
                                                 </Col>
                                             </Row>
                                         </ListGroup.Item>
@@ -167,34 +170,34 @@ const email = useSelector((state) => state.auth.user?.email)
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
-                <Col md={4}>
+                <Col md={5}>
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
-                                <h2>Order Summary</h2>
+                                <h3>Résumé de la commande</h3>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Items</Col>
-                                    <Col>{order.itemsPrice}DNT</Col>
+                                    <Col>Articles</Col>
+                                    <Col>{order.itemsPrice}DT</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Shipping</Col>
-                                    <Col>{order.shippingPrice}DNT</Col>
+                                    <Col>Expédition</Col>
+                                    <Col>{order.shippingPrice}DT</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Tax</Col>
-                                    <Col>{order.taxPrice}DNT</Col>
+                                    <Col>Taxe</Col>
+                                    <Col>{order.taxPrice}DT</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Total</Col>
-                                    <Col>{order.totalPrice}DNT</Col>
+                                    <Col>{order.totalPrice}DT</Col>
                                 </Row>
                             </ListGroup.Item>
                             {!order.isPaid && (

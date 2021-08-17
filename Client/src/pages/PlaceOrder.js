@@ -71,12 +71,12 @@ const PlaceOrder = ({ history }) => {
         <>
             <CheckoutSteps step1 step2 step3 step4 />
             <Row>
-                <Col md={8}>
+                <Col md={6}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2>Shipping</h2>
+                            <h4>Expédition</h4>
                             <p>
-                                <strong>Address: </strong>
+                                <strong>Addresse: </strong>
                                 {cart.shippingAddress.address},{' '}
                                 {cart.shippingAddress.city}{' '}
                                 {cart.shippingAddress.postalCode},{' '}
@@ -84,20 +84,22 @@ const PlaceOrder = ({ history }) => {
                             </p>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <h2>Payment Method</h2>
-                            <strong>Method: </strong>
+                            <h4>Methode de Payment </h4>
+                            <p>
+                            <strong>Methode: </strong>
                             {cart.paymentMethod}
+                            </p>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <h2>Order Items</h2>
+                            <h4>Commander des articles</h4>
                             {cart.cartItems.length < 0 ? (
-                                <Message>Your cart is empty</Message>
+                                <Message>Votre carte est vide</Message>
                             ) : (
                                 <ListGroup variant='flush'>
                                     {cart.cartItems.map((item, index) => (
                                         <ListGroup.Item key={index}>
                                             <Row>
-                                                <Col md={1}>
+                                                <Col md={7}>
                                                     <Image
                                                         src={item.images}
                                                         alt={item.title}
@@ -109,12 +111,12 @@ const PlaceOrder = ({ history }) => {
                                                     <Link
                                                         to={`/product/${item.product}`}
                                                     >
-                                                        {item.title}
+                                                       <h5>{item.title} </h5> 
                                                     </Link>
                                                 </Col>
-                                                <Col md={4}>
-                                                    {item.qty} x  {item.price}DNT{' '}
-                                                    = {item.qty * item.price}DNT
+                                                <Col md={10}>
+                                                    {item.qty} x  {item.price}DT{' '}
+                                                    = {item.qty * item.price}DT
                                                 </Col>
                                             </Row>
                                         </ListGroup.Item>
@@ -124,34 +126,34 @@ const PlaceOrder = ({ history }) => {
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
-                <Col md={4}>
+                <Col md={5}>
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
-                                <h2>Order Summary</h2>
+                                <h4>Résumé de la commande</h4>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Items</Col>
-                                    <Col>{cart.itemsPrice}DNT</Col>
+                                    <Col>Articles</Col>
+                                    <Col>{cart.itemsPrice}DT</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Shipping</Col>
-                                    <Col>{cart.shippingPrice}DNT</Col>
+                                    <Col>Expédition</Col>
+                                    <Col>{cart.shippingPrice}DT</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Tax</Col>
-                                    <Col>{cart.taxPrice}DNT</Col>
+                                    <Col>Taxe</Col>
+                                    <Col>{cart.taxPrice}DT</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Total</Col>
-                                    <Col>{cart.totalPrice}DNT</Col>
+                                    <Col>{cart.totalPrice}DT</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
@@ -166,7 +168,7 @@ const PlaceOrder = ({ history }) => {
                                     disabled={cart.cartItems === 0}
                                     onClick={placeOrderHandler}
                                 >
-                                    Place Order
+                                    Passer à la commande
                                 </Button>
                             </ListGroup.Item>
                         </ListGroup>

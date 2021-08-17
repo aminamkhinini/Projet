@@ -20,25 +20,28 @@ export default function Productsample() {
   
     const [product, setProduct ] = useState([ 
       {
+        
        title:'chicco biberon',
-      price:26,
-      images:'http://localhost:5000/uploads/1626001467152-CHICCO BIBERON EN PLASTIQUE BLEU 0M+150ML.jpg',
+      price:17.6,
+      images:'http://localhost:5000/uploads/1628756798772-CHICCO BIBERON EN PLASTIQUE.jpg',
       },
       {
-        title:'4 protection de coins',
-       price:13,
-       images:'http://localhost:5000/uploads/1626457320207-4-protection-de-coins.jpg',
+        title:'Chicco Lite Way',
+       price:640,
+       images:'http://localhost:5000/uploads/1628493909143-poussette.jpg',
        },
        {
-        title:'chaise haute mini plus',
-       price:295,
-       images:'http://localhost:5000/uploads/1626457026029-chaise-haute-mini-plus.jpg',
+        
+        title:'3 couleurs',
+       price:17,
+       images:'http://localhost:5000/uploads/1628493698792-jeux pate.jpg',
        },
     
     ]
     );
     return (
         <div> 
+          
 <CardGroup className="card-group">
    {product.map(product=>(
  <Card className={classes.root} >
@@ -46,7 +49,7 @@ export default function Productsample() {
         <CardMedia
           component="img"
           alt="image"
-          height="200"
+        
        
           image={product.images}
           title="image product"

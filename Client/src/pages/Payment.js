@@ -33,7 +33,7 @@ const Payment = ({ history }) => {
     return (
         <FormContainer>
             <CheckoutSteps step1 step2 step3 />
-            <h1>Payment Method</h1>
+            <h1>Method de Payment </h1>
             <Form onSubmit={submitHandler}>
                 <Form.Group>
                     <Form.Label as='legen'>Select Method</Form.Label>
@@ -43,7 +43,7 @@ const Payment = ({ history }) => {
                     </Col>
                 </Form.Group>
                 <Button type="submit" variant="primary">
-                    Continue
+                    Continuer
                 </Button>
             </Form>
         </FormContainer>

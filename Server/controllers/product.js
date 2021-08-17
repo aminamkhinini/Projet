@@ -40,7 +40,7 @@ const Product= require('../models/Productschema');
           
             const deleteProduct=await Product.findByIdAndDelete(req.params.id)
         console.log(deleteProduct)
-            res.json({msg: "Deleted item"})
+            res.json({msg: "Deleted product"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }

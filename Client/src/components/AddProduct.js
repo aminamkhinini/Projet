@@ -68,7 +68,7 @@ export default function AddProductMOdal() {
     dispatch(add_product({ ...product, images: imagelink }));
     history.push("/products");
 
-    alert("Product added successfully");
+    alert("Produit ajouté avec succès");
   };
 
   return (
@@ -89,7 +89,7 @@ export default function AddProductMOdal() {
       >
         <div style={modalStyle} className={classes.paper}>
           <form>
-            <label for="avatar">Choisir une image:</label>
+            <label for="avatar" className="input">Choisir une image:</label>
             <input
               type="file"
               id="baby"
@@ -104,7 +104,7 @@ export default function AddProductMOdal() {
               name="title"
               onChange={handleChange}
             />
-            <label className="input">price: DNT </label>
+            <label className="input">price: DT </label>
             <input
               type="text"
               palceholder="price"
@@ -119,20 +119,20 @@ export default function AddProductMOdal() {
               onChange={handleChange}
             />{" "}
             {""}
-            <label for="pet-select">Choisir une categorie :</label>
+            <label for="pet-select" className="input">Choisir une categorie :</label>
             <select
               onChange={handleChange}
               name="category"
               id="category-select"
             >
-              <option value="">--Choisir une categorie--</option>
-              <option value="alimentation">Alimentation</option>
-              <option value="Sommeil">Sommeil</option>
-              <option value="Promenade">Promenade</option>
-              <option value="Hygiène et Bain">Hygiène et Bain</option>
-              <option value="Jeux et Jouets">Jeux et Jouets</option>
-              <option value="Sécurité">Sécurité</option>
-              <option value="Literie et Déco">Literie et Déco</option>
+              <option value="" className="input">--Choisir une categorie--</option>
+              <option value="alimentation"className="input">Alimentation</option>
+              <option value="Sommeil"className="input">Sommeil</option>
+              <option value="Promenade"className="input">Promenade</option>
+              <option value="Hygiène et Bain"className="input">Hygiène et Bain</option>
+              <option value="Jeux et Jouets"className="input">Jeux et Jouets</option>
+              <option value="Sécurité"className="input">Sécurité</option>
+              <option value="Literie et Déco"className="input">Literie et Déco</option>
             </select>
             <label className="input"> countInStock: </label>
             <input
@@ -149,13 +149,13 @@ export default function AddProductMOdal() {
             variant="outlined"
             color="secondary"
           >
-            Ajouter{" "}
+            Enregistrer{" "}
           </Button>
           <br />
           <br />
           <Button  variant="outlined"color="secondary" onClick={handleClose}>
             {" "}
-            fermer{" "}
+            Fermer{" "}
           </Button>
         </div>
       </Modal>

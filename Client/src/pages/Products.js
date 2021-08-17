@@ -29,13 +29,13 @@ const Products = () => {
         <div className="container1">
         <img src="logo/logoimg.png" alt="logo" Width="200" Height="200"  className="logo"/> 
         
-        <h1> Liste Des Produits </h1>
+        <h2> Liste Des Produits </h2>
         <br/>
         
        
-        <Row>
+        <Row classname="row">
                     {products && products.map((product) => (
-                        <Col key={product ? product._id :"id"} sm={12} md={6} lg={4} xl={3}>
+                        <Col key={product ? product._id :"id"} sm={12} md={6} lg={4} xl={3} className="col">
                             <ProductCard product={product} />
                         </Col>
                     ))}

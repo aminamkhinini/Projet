@@ -12,9 +12,7 @@ import { getUserDetails, updateUserProfile } from '../actions/authAction'
 import { listUserOrders } from '../actions/orderAction'
 
 const Profile = ({ history }) => {
-    // Get user details from Redux store
-    const userDetails = useSelector((state) => state.userDetails)
-    const { loading, error, user } = userDetails
+    
     // State to hold email and password
     //const user = useSelector((state) => state.auth.userInfo.user);
     const [name, setName] = useState('')
@@ -26,8 +24,8 @@ const Profile = ({ history }) => {
     const dispatch = useDispatch()
 
     // Get user details from Redux store
-   // const userDetails = useSelector((state) => state.userDetails)
-    //const { loading, error, user } = userDetails
+   const userDetails = useSelector((state) => state.userDetails)
+    const { loading, error, user } = userDetails
 
     // Get user token from Redux store
     const userLogin = useSelector((state) => state. auth)
@@ -41,22 +39,20 @@ const Profile = ({ history }) => {
     const orderListUser = useSelector((state) => state.orderListUser)
     const { loading: loadingOrders, error: errorOrders, orders } = orderListUser
 
-useEffect(() => {
+      useEffect(() => {
         // If there is NO user info then redirect to login page
-       if (!userInfo) {
-           history.push('/login')
-       } else {
-      
-          if (!user.name) {
+        if (!userInfo) {
+            history.push('/login')
+        } else {
+            if (!user) {
                 dispatch(getUserDetails('profile'))
                 dispatch(listUserOrders())
             } else {
                 setName(user.name)
                 setEmail(user.email)
-           }
-       }
-   }, [history, userInfo, dispatch, user])
-
+            }
+        }
+    }, [history, userInfo, dispatch, user])
     // Handler that logs in the user
     const submitHandler = (e) => {
         e.preventDefault()
@@ -72,7 +68,7 @@ useEffect(() => {
     return (
         <Row>
             <Col md={3}>
-                <h2> User Profile</h2>
+                <h2> Profil de l'utilisateur</h2>
                 {error && <Message variant='danger'>{error}</Message>}
                 {message && <Message variant='danger'>{message}</Message>}
                 {success && (

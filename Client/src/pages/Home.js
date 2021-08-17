@@ -1,4 +1,4 @@
-import { Carousel, Card, CardDeck } from "react-bootstrap";
+import { Carousel, Card,Row, Col } from "react-bootstrap";
 import React from "react";
 import {Link} from 'react-router-dom';
 
@@ -43,48 +43,59 @@ const Home = () => {
 <br/>
       <h1> Nos Conseils</h1>
   <br/>    
-      <CardDeck className="home-conseil">
+  <Row classname="row">
+            <Col ms className="col">
+      <Card   className="card1">
+        <Card.Img variant="top" src="images/collier1.jpg"  className="img" />
+        <Card.Body>
+          <Card.Title>Bébé a mal aux dents:que penser du collier d’ambre ?</Card.Title>
+          <Button variant="primary" >
+            <Link to={`/Conseils`} className="link"> <p> Voir plus de détails</p> </Link>  
+            </Button>
+        </Card.Body>
+      </Card>
+      </Col>
+      <Col ms className="col">
+      <Card   className="card1">
+        <Card.Img variant="top" src="images/femme.jpg"className="img"/>
+        <Card.Body>
+          <Card.Title>L’alimentation pendant la grossesse </Card.Title>
+          <Button variant="primary" >
+            <Link to={`/Conseils`} className="link"> <p> Voir plus de détails</p></Link>  
+            </Button>
+        </Card.Body>
+      </Card>
+      </Col>
+      <Col ms className="col"> 
+      <Card className="card1">
+        <Card.Img variant="top" src="images/enceinte.jpg"className="img" />
+        <Card.Body>
+          <Card.Title>Comment bien dormir pendant la grossesse</Card.Title>
+          <Button variant="primary" >
+            <Link to={`/Conseils`} className="link"> <p> Voir plus de détails</p></Link>  
+            </Button>
+        </Card.Body>
+      </Card>
       
-        <Card  style={{ width: "400px" ,height:"500px"}} className="card1">
-          <Card.Img variant="top" src="images/collier1.jpg" className="img" />
-          <Card.Body>
-            <Card.Title>Bébé a mal aux dents:que penser du collier d’ambre ? </Card.Title>
-            <Button variant="primary" >
-            <Link to={`/Conseils`} className="link"> Voir plus de détails</Link>  
+      </Col>
+      <Col ms className="col">
+      <Card   className="card1">
+        <Card.Img src="images/fievre.jpg" className="img" />
+        <Card.Body>
+          <Card.Title>La Fièvre</Card.Title>
+          <Button variant="primary" >
+            <Link to={`/Conseils`} className="link"> <p> Voir plus de détails</p></Link>  
             </Button>
-          </Card.Body>
-        </Card>
-        <Card  style={{ width: "400px" ,height:"500px"}} className="card1">
-          <Card.Img variant="top" src="images/femme.jpg"className="img" />
-          <Card.Body>
-            <Card.Title>L’alimentation pendant la grossesse :</Card.Title>
-            <Button variant="primary" >
-            <Link to={`/Conseils`} className="link">Voir plus de détails</Link>  
-            </Button>
-          </Card.Body>
-        </Card>
-  
-      
-        <Card  style={{ width: "400px" ,height:"500px"}}className="card1">
-          <Card.Img variant="top" src="images/enceinte.jpg"className="img" />
-          <Card.Body>
-            <Card.Title>Comment bien dormir pendant la grossesse</Card.Title>
-            <Button variant="primary" >
-            <Link to={`/Conseils`} className="link"> Voir plus de détails</Link>  
-            </Button>
-          </Card.Body>
-        </Card>
-        <Card   style={{ width: "400px" ,height:"500px"}}className="card1">
-          <Card.Img variant="top" src="images/fievre.jpg" className="img"/>
-          <Card.Body>
-            <Card.Title>La Fièvre</Card.Title>
-            <Button variant="primary" >
-            <Link to={`/Conseils`} className="link">Voir plus de détails</Link>  
-            </Button>
-          </Card.Body>
-        </Card>
-       
-      </CardDeck>
+        </Card.Body>
+      </Card>
+    </Col>         
+                </Row>
+
+ 
+   
+
+
+
       <br/>
       <h1> babylando</h1>
       <br/>

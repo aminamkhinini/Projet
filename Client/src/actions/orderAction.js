@@ -28,8 +28,8 @@ export const createOrder = (order) => async (dispatch,getState) => {
       // Header to send with the request
       const config = {
         headers: { "auth-token": localStorage.getItem('auth-token'),
-        "userInfo": localStorage.getItem('userInfo') },
-      }
+        //"userInfo": localStorage.getItem('userInfo') },
+      }}
        
      
 
@@ -66,8 +66,8 @@ export const getOrderDetails = (orderId) => async (dispatch,getState) => {
       // Header to send with the request
       const config = {
         headers: { "auth-token": localStorage.getItem('auth-token'),
-        "userInfo": localStorage.getItem('userInfo') },
-      }
+        //"userInfo": localStorage.getItem('userInfo') },
+      }}
        
 
       // Make request to server and get the response data
@@ -102,8 +102,8 @@ export const payOrder = (orderId, paymentResult) => async (dispatch,getState) =>
       // Header to send with the request
       const config = {
         headers: { "auth-token": localStorage.getItem('auth-token'),
-        "userInfo": localStorage.getItem('userInfo') },
-      }
+       // "userInfo": localStorage.getItem('userInfo') },
+      }}
 
       // Make request to server and get the response data
       const { data } = await axios.put(

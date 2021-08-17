@@ -13,15 +13,15 @@ const ProductCard = ({ product }) => {
             </Link>
             <Card.Body>
             <Link to={`/ProductScreen/${product? product._id: "id"}`} className="link">
-                    <Card.Title as='div'>
-                        <strong>{product && product.title}</strong>
+                    <Card.Title  className="title">
+                        <strong> <h5> {product && product.title}</h5></strong>
                     </Card.Title>
                 </Link>
                 <Card.Text as='div'>
-                    
+                <Card.Text as='h5'className="price">{product && product.price}DT</Card.Text>
+                <Card.Text as='h5' className="category">{product && product.category}</Card.Text>
                 </Card.Text>
-                <Card.Text as='h3'>{product && product.price}DT</Card.Text>
-                <Card.Text as='h3'>{product && product.category}</Card.Text>
+                
             </Card.Body>
         </Card>
     )

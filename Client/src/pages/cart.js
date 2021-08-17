@@ -35,10 +35,12 @@ const productId=match.params.id
     return (
         <Row>
             <Col md={8}>
-                <h5>Shopping Cart</h5>
+                <h5>Panier d'Achat</h5>
                 {cartItems.length === 0 ? (
                     <>
-                        Your cart is empty <Link to='/'>Go back</Link>
+                        votre catre est vide
+                        <br/>
+                         <Link to='/Products'>Revenir en Arrière</Link>
                     </>
                 ) : (
                     <ListGroup variant='flush'>
@@ -58,7 +60,7 @@ const productId=match.params.id
                                             {item.title}
                                         </Link>
                                     </Col>
-                                    <Col md={2}>DT{item.price}</Col>
+                                    <Col md={2}>{item.price} DT</Col>
                                     <Col md={2}>
                                         <Form.Control
                                             as='select'
@@ -111,19 +113,19 @@ const productId=match.params.id
                         <ListGroup.Item>
                             <h5>
                                 Subtotal (
-                                {cartItems.reduce(
+                                   {cartItems.reduce(
                                     (acc, item) => acc + item.qty,
                                     0
-                                )}
-                                ) items
+                                )}DT
+                                )  articles
                             </h5>
-                           DT
+                          
                             {cartItems
                                 .reduce(
                                     (acc, item) => acc + item.qty * item.price,
                                     0
                                 )
-                                .toFixed(2)}
+                                .toFixed(2)}DT
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Button
@@ -132,7 +134,7 @@ const productId=match.params.id
                                 disabled={cartItems.length === 0}
                                 onClick={checkoutHandler}
                             >
-                                Proceed to checkout
+                                Passez à la caisse
                             </Button>
                         </ListGroup.Item>
                     </ListGroup>

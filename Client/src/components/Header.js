@@ -29,10 +29,11 @@ const Header = () => {
                     collapseOnSelect
                     sticky="top" 
                     style={{backgroundColor:"pink",color:"black", height:60}}
+                    className="nav"
                 >
                     <Container>
                         <LinkContainer to='/'>
-                            <Navbar.Brand>Babylando</Navbar.Brand>
+                            <Navbar.Brand>babylando</Navbar.Brand>
                         </LinkContainer>
                         <LinkContainer to='/Conseils'>
                             <Navbar.Brand>Nos Conseils</Navbar.Brand>

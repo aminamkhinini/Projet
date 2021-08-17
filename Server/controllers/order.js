@@ -1,4 +1,5 @@
 const Order = require('../models/Orderschema');
+const uuid = require('uuid')
 
 
 
@@ -7,6 +8,7 @@ const Order = require('../models/Orderschema');
 // @access Private
 exports.addOrderItems = async (req, res) => {
     try{
+       
         const {
             orderItems,
             shippingAddress,
@@ -24,7 +26,7 @@ exports.addOrderItems = async (req, res) => {
     else {
         const order = new Order({
             orderItems,
-            user: req.userid,
+            user: req.userId,
             shippingAddress,
             paymentMethod,
             itemsPrice,
@@ -32,13 +34,17 @@ exports.addOrderItems = async (req, res) => {
             shippingPrice,
             totalPrice,
         })
+        //console.log(("order===",order))
 
         const createdOrder = await order.save()
+        //console.log(("createdorder===",createdOrder))
+
 
         res.status(201).json(createdOrder)
     }
    
 } catch (err) {
+    console.log('error===',err)
     return res.status(500).json({msg: err.message})
 }
 
@@ -49,8 +55,7 @@ exports.addOrderItems = async (req, res) => {
 exports. getOrderById = async (req, res) => {
     try{
     const order = await Order.findById(req.params.id).populate(
-        'user',
-        'name email'
+        'user'
     )
 
     // if order exists else throw error
@@ -62,6 +67,7 @@ exports. getOrderById = async (req, res) => {
     }
 }
  catch (err) {
+     console.log('error egt details==',err)
     return res.status(500).json({msg: err.message})
 }
 }
@@ -79,12 +85,11 @@ exports.updateOrderToPaid = async (req, res) => {
         order.isPaid = true
         order.paidAt = Date.now()
         order.paymentResult = {
-            id: req.body.id,
-            status: req.body.status,
-            update_time: req.body.update_time,
-            email_address: req.body.email_address,
+            id:uuid.v4(),
+            status: 'Paid',
+            
         }
-
+console.log('pay===',updateOrder)
         // Save the updated order in the DB
         const updatedOrder = await order.save()
 

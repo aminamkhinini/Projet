@@ -41,7 +41,7 @@ export default function UpdateProduct({ product }) {
       })
     );
     history.push("/products");
-    alert("product updated successfully");
+    alert("Produit modifié avec succès");
   };
 
   return (
@@ -64,7 +64,7 @@ export default function UpdateProduct({ product }) {
           <Form onSubmit={submitHandler}>
         
             <Form.Group controlId="baby">
-              <Form.Label> choisir un image:</Form.Label>
+              <Form.Label className="input"> choisir un image:</Form.Label>
               <Form.Control
                 type="file"
                 placeholder="image"
@@ -79,7 +79,7 @@ export default function UpdateProduct({ product }) {
 
 
             <Form.Group controlId="title">
-              <Form.Label>Title:</Form.Label>
+              <Form.Label className="input">Title:</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="title"
@@ -89,7 +89,7 @@ export default function UpdateProduct({ product }) {
             </Form.Group>
 
             <Form.Group controlId="price">
-              <Form.Label>Prix:</Form.Label>
+              <Form.Label className="input">Prix:</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="price"
@@ -99,7 +99,7 @@ export default function UpdateProduct({ product }) {
             </Form.Group>
 
             <Form.Group controlId="description">
-              <Form.Label>Description: </Form.Label>
+              <Form.Label className="input">Description: </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="description"
@@ -108,7 +108,7 @@ export default function UpdateProduct({ product }) {
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId="category">
-              <Form.Label>Catégorie: </Form.Label>
+              <Form.Label className="input">Catégorie: </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="category"
@@ -117,7 +117,7 @@ export default function UpdateProduct({ product }) {
               ></Form.Control>
             </Form.Group>
            <Form.Group controlId="countInstock">
-              <Form.Label>countInstock: </Form.Label>
+              <Form.Label className="input">countInstock: </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="countInstock"

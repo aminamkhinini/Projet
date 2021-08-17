@@ -30,9 +30,12 @@ const ProductScreen = ({ history, match}) => {
     return (
         <>
         
-        <Link className='btn btn-secondary my-3' to='/Products'>
-                Go Back
+      
+                                      
+        <Link  to='/Products'>
+            <h6>Revenir en Arrière </h6>
             </Link>
+   
             {loading ? (
                 <Loader />
             ) : error ? (
@@ -40,14 +43,14 @@ const ProductScreen = ({ history, match}) => {
             ) : (
            
                 <Row>
-                    <Col md={6}>
+                    <Col md={5}>
                         <Image
                             src={product && product.images}
                             alt="image product"
                             fluid
                         ></Image>
                     </Col>
-                    <Col md={3}>
+                    <Col md={4}>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <h3>{product && product.title}</h3>
@@ -69,7 +72,7 @@ const ProductScreen = ({ history, match}) => {
                                     <Row>
                                         <Col>Prix:</Col>
                                         <Col>
-                                            <strong>{product && product.price}DNT</strong>
+                                            <strong>{product && product.price}DT</strong>
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
@@ -86,7 +89,7 @@ const ProductScreen = ({ history, match}) => {
                                 {product && product.countInStock > 0 && (
                                     <ListGroup.Item>
                                         <Row>
-                                            <Col>Qty</Col>
+                                            <Col>Qte</Col>
                                             <Col>
                                                 <Form.Control
                                                     as='select'
@@ -119,7 +122,7 @@ const ProductScreen = ({ history, match}) => {
                                         type='button'
                                         onClick={addToCartHandler}
                                     >
-                                        Add To Cart
+                                        Ajouter à la carte
                                     </Button>
                                 </ListGroup.Item>
                             </ListGroup>
