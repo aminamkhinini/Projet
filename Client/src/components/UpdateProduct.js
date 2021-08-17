@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
@@ -7,21 +7,23 @@ import { Form, Modal } from "react-bootstrap";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 
-import { addImage, update_product } from "../actions/productAction";
+import { addImage, update_product,getProducts } from "../actions/productAction";
 
 export default function UpdateProduct({ product }) {
+  const dispatch=useDispatch();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const { imagelink } = useSelector((state) => state.image);
-  const dispatch = useDispatch();
+
   const [title, setTitle] = useState(product.title);
   const [price, setPrice] = useState(product.price);
   const [description, setDescription] = useState(product.description);
   const [category, setCategory] = useState(product.category);
-  const [countInstock, setCountInstock] = useState(product.countInstock);
+  const [countInStock, setCountInStock] = useState(product.countInStock);
 
   
 
@@ -36,10 +38,11 @@ export default function UpdateProduct({ product }) {
         price,
         description,
         category,
-        countInstock,
+        countInStock,
         images: imagelink,
       })
     );
+   
     history.push("/products");
     alert("Produit modifié avec succès");
   };
@@ -120,9 +123,9 @@ export default function UpdateProduct({ product }) {
               <Form.Label className="input">countInstock: </Form.Label>
               <Form.Control
                 type="text"
-                placeholder="countInstock"
-                value={countInstock}
-                onChange={(e) => setCountInstock(e.target.value)}
+                placeholder="countInStock"
+                value={countInStock}
+                onChange={(e) => setCountInStock(e.target.value)}
               ></Form.Control>
             </Form.Group>
           </Form>
